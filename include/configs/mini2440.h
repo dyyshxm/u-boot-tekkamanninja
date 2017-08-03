@@ -141,9 +141,9 @@
 #define CONFIG_BOOTARGS		"noinitrd root=/dev/mtdblock2 console=ttySAC0,115200 init=/linuxrc mem=64M"
 #define CONFIG_ETHADDR	        08:08:11:18:12:27
 #define CONFIG_NETMASK          255.255.255.0
-#define CONFIG_IPADDR		192.168.0.2
-#define CONFIG_SERVERIP		192.168.0.1
-#define CONFIG_GATEWAYIP	192.168.0.1
+#define CONFIG_IPADDR		192.168.199.11
+#define CONFIG_SERVERIP		192.168.199.249
+#define CONFIG_GATEWAYIP	192.168.199.1
 #define CONFIG_OVERWRITE_ETHADDR_ONCE
 
 /*#define CONFIG_BOOTFILE	"elinos-lart" */
@@ -259,7 +259,7 @@
 //#else 
 #define CONFIG_ENV_IS_IN_NAND 1
 //#define CONFIG_ENV_IS_IN_FLASH 1
-#define CONFIG_ENV_OFFSET 0X60000
+#define CONFIG_ENV_OFFSET 0X40000  //zye
 #define CONFIG_ENV_SIZE			0x20000	/* Total Size of Environment Sector */
 //#endif
 
@@ -324,7 +324,7 @@
 
 #define CONFIG_JFFS2_CMDLINE 1
 #define MTDIDS_DEFAULT "nand0=nandflash0"
-#define MTDPARTS_DEFAULT "mtdparts=nandflash0:384k(bootloader)," \
+#define MTDPARTS_DEFAULT "mtdparts=nandflash0:256k(bootloader)," \
 					      "128k(params)," \
 					      "5m(kernel)," \
 					      "-(root)"
