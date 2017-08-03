@@ -134,7 +134,7 @@ copyex:
 #ifdef CONFIG_S3C24X0
 	/* turn off the watchdog */
 
-# if defined(CONFIG_S3C2400)
+#if defined(CONFIG_S3C2400)
 #  define pWTCON	0x15300000
 #  define INTMSK	0x14400008	/* Interupt-Controller base addresses */
 #  define CLKDIVN	0x14800014	/* clock divisor register */
@@ -143,7 +143,8 @@ copyex:
 #  define INTMSK	0x4A000008	/* Interupt-Controller base addresses */
 #  define INTSUBMSK	0x4A00001C
 #  define CLKDIVN	0x4C000014	/* clock divisor register */
-# endif
+#endif
+
 #define CLK_CTL_BASE	0x4C000000	/* tekkaman */
 #define MDIV_405	0x7f << 12	/* tekkaman */
 #define PSDIV_405	0x21		/* tekkaman */
@@ -161,11 +162,12 @@ copyex:
 	mov	r1, #0xffffffff
 	ldr	r0, =INTMSK
 	str	r1, [r0]
-# if defined(CONFIG_S3C2410)
+	
+#if defined(CONFIG_S3C2410)
 	ldr	r1, =0x7ff
 	ldr	r0, =INTSUBMSK
 	str	r1, [r0]
-# endif
+#endif
 
 #if defined(CONFIG_S3C2440)
 	ldr	r1, =0x7fff	
@@ -189,7 +191,6 @@ copyex:
 	mov	r2, #MDIV_405	
 	add	r2, r2, #PSDIV_405	
 	str	r2, [r1, #0x04]		/* MPLLCON tekkaman */
-
 #else
 	/* FCLK:HCLK:PCLK = 1:2:4 */
 	/* default FCLK is 120 MHz ! */
@@ -208,6 +209,7 @@ copyex:
 	add	r2, r2, #PSDIV_200	
 	str	r2, [r1, #0x04]
 #endif
+
 #endif	/* CONFIG_S3C24X0 */
 
 	/*
